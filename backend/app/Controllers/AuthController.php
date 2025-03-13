@@ -20,9 +20,8 @@ class AuthController extends ResourceController
 
         // Validasi
         $rules = [
-            'username' => 'required|alpha_numeric_space|min_length[3]|is_unique[users.username]',
+            'username' => 'required|min_length[3]',
             'password' => 'required|min_length[4]',
-            'pass_confirm' => 'required|matches[password]',
         ];
 
         if (! $this->validate($rules)) {
@@ -86,7 +85,11 @@ class AuthController extends ResourceController
 
         return $this->respond([
             'status'  => 200,
-            'message' => 'Login successful'
+            'message' => 'Login successful',
+            'user'    => [
+                'id'       => $user['id'],
+                'username' => $user['username'],
+            ],
         ]);
     }
 

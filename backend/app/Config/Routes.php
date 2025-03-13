@@ -14,11 +14,15 @@ $routes->group('api', static function ($routes) {
     $routes->get('logout', 'AuthController::logout');
 
     // Proteksi partlists dengan filter 'auth'
-    $routes->group('', ['filter' => 'auth'], function ($routes) {
-        // Asumsikan Anda punya ResourceController PartListController
-        // yang mengelola /api/partlists
-        $routes->resource('partlists', [
-            'controller' => 'PartListController'
-        ]);
-    });
+    // $routes->group('', ['filter' => 'auth'], function ($routes) {
+    //     // Asumsikan Anda punya ResourceController PartListController
+    //     // yang mengelola /api/partlists
+    //     $routes->resource('partlists', [
+    //         'controller' => 'PartListController'
+    //     ]);
+    // });
+
+    $routes->resource('partlists', [
+        'controller' => 'PartListController'
+    ]);
 });
