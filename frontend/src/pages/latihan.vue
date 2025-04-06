@@ -1,18 +1,24 @@
 <template>
-    <div>
-        <h1>Ini adalah Judul</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae mollitia tenetur cum, odio inventore commodi accusamus dignissimos obcaecati facere itaque sunt quasi rem consectetur esse dolorum rerum similique tempore eius.
-        Laudantium eaque aliquid consequatur? Fugiat eaque optio eos eligendi, ea, cum accusantium veritatis exercitationem sint incidunt enim, dicta obcaecati totam! Necessitatibus hic reprehenderit et corporis obcaecati laboriosam magnam dicta odio.
-        Saepe suscipit, magnam dolorem aperiam autem dolores recusandae sint corrupti. Voluptatum quos fugiat velit. Magnam ipsam cum animi molestiae, sequi molestias nisi sint maiores, autem illum tempora assumenda ad quos.
-        Dolorum beatae, possimus totam inventore veniam minima! Facilis, dolor ducimus, vero explicabo perferendis eligendi dolorem fuga exercitationem ullam quisquam unde delectus. Quaerat dolor inventore, eligendi sunt delectus vel sint explicabo.
-        Distinctio blanditiis dignissimos quia inventore doloremque, quas totam? Sapiente debitis quae suscipit impedit! Laboriosam similique provident voluptatibus maiores minima. Exercitationem perferendis architecto enim officia natus, eaque dolorum earum vero odio.</p>
-    </div>
+  <div class="pa-4 text-center">
+    <v-dialog v-model="dialog" max-width="600">
+      <template v-slot:activator="{ props: activatorProps }">
+        <v-btn
+          class="text-none font-weight-regular"
+          prepend-icon="mdi-account"
+          text="Edit Profile"
+          variant="tonal"
+          v-bind="activatorProps"
+        ></v-btn>
+      </template>
+
+      <Form @close="dialog = false" @save="dialog = false" />
+    </v-dialog>
+  </div>
 </template>
-<script>
-export default {
-    
-}
+
+<script setup>
+import { shallowRef } from 'vue';
+import Form from "@/views/pages/form-layouts/PartlistForm.vue" // Import komponen Form
+
+const dialog = shallowRef(false);
 </script>
-<style>
-    
-</style>
